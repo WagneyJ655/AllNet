@@ -1,0 +1,269 @@
+#!/bin/bash
+
+menu ()
+{
+
+clear
+
+echo "__________________________________"
+echo
+echo
+echo "Criar e Excluir Diretórios ou Arquivos"
+echo
+echo "__________________________________"
+
+echo "Deseja Criar ou Excluir?"
+echo 
+echo "< 1 > Criar"
+echo "< 2 > Excluir" 
+echo "< 3 > Mostrar Diretórios"
+echo "< 0 > Sair"
+read inic
+case $inic in
+
+1) criar ;;
+2) excluir ;; 
+3) mostrar ;; 
+0) exit ;; 
+esac
+}
+
+criar ()
+{
+clear
+echo "__________________________________"
+echo  
+echo 
+echo "Criar Diretórios ou Arquivos"
+echo 
+echo "__________________________________"
+
+echo "Você deseja criar um Diretóio ou um arquivo?"
+echo 
+echo "< 1 > Diretório"
+echo "< 2 > Arquivo"
+echo "< 0 > Cancelar"
+read resposta
+case $resposta in
+
+1) diretorio ;;
+2) arquivo ;;
+0) exit ;;
+
+esac
+
+}
+
+diretorio ()
+{
+
+clear
+
+echo "Digite o nome do Diretório"
+read diret
+mkdir $diret
+echo "Diretório criado!"
+echo 
+echo 
+ls
+echo 
+echo 
+
+echo "O que deseja fazer agora?"
+echo "< c > Continuar"
+echo "< m > Menu Principal"
+echo "< s > Sair"
+
+echo "Escolha uma opção: "
+read op
+
+if [ "$op" = "c" ]
+then
+diretorio
+elif [ "$op" = "m" ]
+then
+menu
+elif [ "$op" = "s" ]
+then
+clear
+exit
+else
+echo "Opção Inválida! "
+fi
+
+}
+
+arquivo ()
+{
+
+clear
+
+echo "Digite o nome do Arquivo e sua extensão (.txt .sh, etc)"
+read arq
+touch $arq
+echo "Arquivo criado!"
+chmod 777 $arq
+echo 
+echo 
+ls
+echo 
+echo 
+
+echo "O que deseja fazer agora?"
+echo "< c > Continuar"
+echo "< m > Menu Principal"
+echo "< s > Sair"
+
+echo "Escolha uma opção: "
+read op
+
+if [ "$op" = "c" ]
+then
+arquivo
+elif [ "$op" = "m" ]
+then
+menu
+elif [ "$op" = "s" ]
+then
+clear
+exit
+else
+echo "Opção Inválida! "
+fi
+
+}
+
+excluir ()
+{
+
+clear
+echo "Você deseja excluir um Diretório ou um arquivo?"
+echo
+echo "< 1 > Diretório"
+echo "< 2 > Arquivo"
+echo "< 0 > Cancelar"
+read resp
+case $resp in
+
+1) diret ;;
+2) arq ;;
+0) exit ;;
+
+esac
+}
+
+diret ()
+{
+
+clear
+echo "Digite o nome do Diretório: "
+read d
+rmdir $d
+echo "Diretório excluído!"
+echo 
+echo 
+ls
+echo 
+echo 
+
+echo "O que deseja fazer agora?"
+echo "< c > Continuar"
+echo "< m > Menu Principal"
+echo "< s > Sair"
+
+echo "Escolha uma opção: "
+read op
+
+if [ "$op" = "c" ]
+then
+diret
+elif [ "$op" = "m" ]
+then
+menu
+elif [ "$op" = "s" ]
+then
+clear
+exit
+else
+echo "Opção Inválida! "
+fi
+
+}
+
+arq ()
+{
+
+clear
+echo "Digite o nome do Arquivo"
+read a
+rm $a
+echo "Arquivo excluído!"
+echo 
+echo 
+ls
+echo 
+echo 
+
+echo "O que deseja fazer agora?"
+echo "< c > Continuar"
+echo "< m > Menu Principal"
+echo "< s > Sair"
+
+echo "Escolha uma opção: "
+read op
+
+if [ "$op" = "c" ]
+then
+arq
+elif [ "$op" = "m" ]
+then
+menu
+elif [ "$op" = "s" ]
+then
+clear
+exit
+else
+echo "Opção Inválida! "
+fi
+}
+
+mostrar ()
+{
+
+clear
+echo "Você possui os seguintes diretórios: "
+echo 
+echo 
+ls
+echo  
+echo 
+
+echo "O que deseja fazer agora?"
+echo "< m > Menu Principal"
+echo "< s > Sair"
+
+echo "Escolha uma opção: "
+read op
+
+if [ "$op" = "m" ]
+then
+menu
+elif [ "$op" = "s" ]
+then
+clear
+exit
+else
+echo "Opção Inválida! "
+fi
+}
+
+
+clear
+menu
+
+
+# Criado por WagneyJ em 24/09/2014
+# Projeto feito para o Módulo de Servidor Linux na Turma de T.I. HB19
+
+
+
